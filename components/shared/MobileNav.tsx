@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navLinks } from "@/constants";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
@@ -19,8 +12,8 @@ const MobileNav = () => {
   const pathname = usePathname();
 
   return (
-    <header className="header">
-      <Link href={"/"} className="flex items-center g2 md:py-2">
+    <header className="header z-50">
+      <Link href={"/"} className="g2 flex items-center md:py-2">
         <Image
           src={"/assets/images/logo-text.svg"}
           alt="logo"
@@ -29,7 +22,7 @@ const MobileNav = () => {
         />
       </Link>
 
-      <nav className="flex gap-2 ">
+      <nav className="flex gap-2">
         <SignedIn>
           <UserButton afterSwitchSessionUrl="/" />
 
@@ -40,7 +33,7 @@ const MobileNav = () => {
                 alt="menu"
                 width={32}
                 height={32}
-                className=" cursor-pointer"
+                className="cursor-pointer"
               />
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64">
@@ -51,7 +44,7 @@ const MobileNav = () => {
                   width={152}
                   height={23}
                 />
-                <ul className="header-nav_elements ">
+                <ul className="header-nav_elements">
                   {navLinks.map((link) => {
                     const isActive = link.route === pathname;
                     return (
@@ -59,9 +52,9 @@ const MobileNav = () => {
                         key={link.route}
                         className={` ${
                           isActive
-                            ? "gradient-text  text-white"
+                            ? "gradient-text text-white"
                             : "text-dark-700"
-                        } p-18 whitespace-nowrap `}
+                        } p-18 whitespace-nowrap`}
                       >
                         <Link
                           href={link.route}

@@ -1,10 +1,11 @@
 import mongoose, { Schema } from "mongoose";
 
 export interface IImage {
+  _id: String;
   title: string;
   transformationType: string;
   publicId: string;
-  secureUrl: URL;
+  secureURL: URL;
   width?: number;
   height?: number;
   config?: object;
@@ -34,8 +35,8 @@ const ImageSchema = new Schema({
     type: String,
     required: true,
   },
-  secureUrl: {
-    type: URL,
+  secureURL: {
+    type: String,
     required: true,
   },
   width: {
@@ -48,7 +49,7 @@ const ImageSchema = new Schema({
     type: Object,
   },
   transformationUrl: {
-    type: URL,
+    type: String,
   },
   aspectRatio: {
     type: String,
@@ -73,7 +74,6 @@ const ImageSchema = new Schema({
   },
 });
 
-const Image =
-  mongoose.models?.Image || mongoose.model("Image", ImageSchema);
+const Image = mongoose.models?.Image || mongoose.model("Image", ImageSchema);
 
 export default Image;
